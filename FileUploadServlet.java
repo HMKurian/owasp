@@ -123,10 +123,18 @@ public class FileUploadServlet extends HttpServlet {
 		writer.close();
 	}
 	public class DatabaseUtil {
-	    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/FinTech";
-	    private static final String DATABASE_USER = "db_ezz";
-	    private static final String DATABASE_PASSWORD = "csci381";
-
+	    private static final String DATABASE_URL = "jdbc:mysql://172.31.27.52:3306/FinTech";
+	    private static final String DATABASE_USER = "db_user";
+	    private static final String DATABASE_PASSWORD = "new_password";
+	    
+	    static {
+	        try {
+	            Class.forName("com.mysql.cj.jdbc.Driver");
+	        } catch (ClassNotFoundException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    
 	    public static Connection getConnection() throws SQLException {
 	        return DriverManager.getConnection(DATABASE_URL, DATABASE_USER, DATABASE_PASSWORD);
 	    }
